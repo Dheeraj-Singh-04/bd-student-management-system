@@ -4,6 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>View</title>
+    <link rel="stylesheet" href="/style.css" />
+
   </head>
   <body>
     <h1>Student Record's</h1>
@@ -12,5 +14,8 @@
     <p>Age: <b><%= studentData.age %></b></p>
     <p>Email: <b><%= studentData.email %></b></p>
     <p>Course: <b><%= studentData.course %></b></p>
+    <form action="/students" method="get">
+      <button class="msg">Dashboard</button>
+    </form>
   </body>
 </html>

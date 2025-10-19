@@ -12,7 +12,7 @@ router.post("/students", (req, res) => {
 });
 
 // add new student into db
-router.post("/addstudent", (req, res) => {
+router.post("/addstudent", async (req, res) => {
   let { Name, age, email, course } = req.body;
   let newStudent = {
     Name: Name,
@@ -21,15 +21,21 @@ router.post("/addstudent", (req, res) => {
     course: course,
     created_at: Date.now(),
   };
-  // console.log(newStudent);
-  Record.insertOne(newStudent)
-    .then((res) => {
-      console.log(res);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-  res.redirect("/students");
+  const existEmail = await Record.findOne({ email: newStudent.email });
+
+  if (existEmail) {
+    res.render("existEmail.ejs");
+    // res.send("Email already exist!!!!");
+  } else {
+    Record.insertOne(newStudent)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    res.redirect("/students");
+  }
 });
 
 // View the Single studentInfo

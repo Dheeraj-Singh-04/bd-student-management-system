@@ -11,6 +11,7 @@ const recordSchema = new mongoose.Schema({
   email: {
     type: String,
     unique: true,
+    required: true,
   },
   course: {
     type: String,

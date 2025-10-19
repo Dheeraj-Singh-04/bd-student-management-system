@@ -5,6 +5,9 @@ const PORT = 3000;
 const mongoose = require("mongoose");
 // import Record from "./model/record";
 const Record = require("./model/record");
+
+const nameDir = require("./util/path");//path require
+
 const path = require("path");
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
@@ -17,6 +20,9 @@ app.use(methodOverride("_method"));
 
 // use of filtering
 app.use("/api", studentRouter);
+
+app.use(express.static(path.join(nameDir, "public"))); //static file
+
 
 async function main() {
   await mongoose.connect("mongodb://localhost:27017/studentrecord");
