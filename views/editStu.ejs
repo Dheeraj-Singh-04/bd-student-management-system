@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit</title>
+  </head>
+  <body>
+    <h1>Update the Student Record's</h1>
+    <form
+      action="/api/<%= studentData._id %>/updated?_method=PUT"
+      method="post"
+    >
+      <h3>Student ID: <%=studentData._id %></h3>
+      <input type="text" value="<%= studentData.Name %>" name="Name" />
+      <br /><br />
+      <input type="text" value="<%= studentData.age %>" name="age" />
+      <br /><br />
+
+      <input type="text" value="<%= studentData.email %>" name="email" />
+      <br /><br />
+
+      <input
+        type="text"
+        value="<%= studentData.course %>"
+        name="course"
+      />
+      <br /><br />
+
+      <button>Done</button>
+    </form>
+  </body>
+</html>

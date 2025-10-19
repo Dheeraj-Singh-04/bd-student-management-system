@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>All Students</title>
+    <style>
+      .student-box {
+        border: 1px solid #ccc;
+        padding: 10px;
+        margin-bottom: 10px;
+        border-radius: 6px;
+      }
+      .msg {
+        background-color: #008cba;
+        color: white;
+        border: none;
+        padding: 6px 12px;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Students Record</h1>
+    <form
+      action="/api/students"
+      style="display: inline-block; margin-bottom: 10px"
+      method="post"
+    >
+      <button class="msg">Add Student</button>
+    </form>
+    <% for (let student of studentRecord) { %>
+    <div class="student-box">
+      <p>Name: <b><%= student.Name %></b></p>
+      <p>Age: <b><%= student.age %></b></p>
+      <p>Email: <b><%= student.email %></b></p>
+      <p>Course: <b><%= student.course %></b></p>
+      <p>Time: <%= student.created_at.toString().split(" ")[4] %></p>
+      <p>
+        Date: <%= student.created_at.toString().split(" ").slice(0, 4).join("-")
+        %>
+      </p>
+
+      <form
+        action="/api/<%=student._id%>/students"
+        style="display: inline-block"
+        method="get"
+      >
+        <button class="msg">View Record</button>
+      </form>
+      <form
+        action="/api/<%=student._id%>/edit"
+        style="display: inline-block"
+        method="get"
+      >
+        <button class="msg">Edit</button>
+      </form>
+      <form
+        action="/api/<%=student._id %>/students?_method=DELETE"
+        method="post"
+        style="display: inline-block"
+      >
+        <button class="msg">Delete</button>
+      </form>
+    </div>
+    <% } %>
+  </body>
+</html>

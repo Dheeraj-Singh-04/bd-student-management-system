@@ -1,0 +1,59 @@
+# Node.js dependencies
+node_modules/
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# OS-generated files
+.DS_Store
+Thumbs.db
+
+# IDE / Editor files
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# Build and cache directories
+dist/
+build/
+.cache/
+.temp/
+
+# Coverage reports
+coverage/
+*.lcov
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.swp
+
+# MongoDB dump files
+dump/
+
+# Uploaded files (if any)
+uploads/
+public/uploads/
+
+# EJS view cache (if used)
+views/*.ejs~
+
+# Optional: Ignore compiled JS from TS (if using TypeScript)
+*.tsbuildinfo
+
+# Misc
+package-lock.json
